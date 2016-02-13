@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package affinecaesar;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Owner
+ */
+public class KeyGen {
+    
+    public void encrypt(ArrayList plainText, ArrayList cipherText) {
+        for (Object plainText1 : plainText) {
+            int ct = (int) plainText1 - 97;
+            ct = ((ct*5)+8)%26+97;
+            cipherText.add(ct);
+        }
+    }
+    
+    public void decrypt(ArrayList cipherText, ArrayList decodedText){
+        for (Object cipherText1 : cipherText) {
+            int ct = (int) cipherText1 - 97;
+            ct = 21*(ct-8+26) %26 + 97;
+            decodedText.add(ct);
+            
+        }
+    }
+}
