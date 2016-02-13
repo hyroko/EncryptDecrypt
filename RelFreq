@@ -1,0 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package affinecaesar;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+
+/**
+ *
+ * @author Owner
+ */
+public class RelFreq {
+
+    public void getFrequency(ArrayList text, ArrayList frequency) {
+       int i = 1;
+        while( i <= 26 ){
+        double freq = Collections.frequency(text,96+i);
+        System.out.println((char)(i+96) + ": " + 
+             new DecimalFormat("##.###").format(100*freq/text.size())+"%");
+        frequency.add(freq);
+        
+        i++;
+    }
+        System.out.println("Total letters: " + text.size());
+    }
+
+}
