@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package affinecaesar;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Owner
+ */
+public class AffineCaesar {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        ArrayList plainText;
+        plainText = new ArrayList();
+
+        ArrayList cipherText;
+        cipherText = new ArrayList();
+
+        ArrayList decodedText;
+        decodedText = new ArrayList();
+
+        ArrayList frequency;
+        frequency = new ArrayList();
+
+        InputFile cipherFile = new InputFile();
+
+        KeyGen gen = new KeyGen();
+
+        RelFreq table = new RelFreq();
+
+        System.out.println("Enter filename path. "
+                + "If you don't put in the full path, it will not work.\n"
+                + "For example: C:\\Users\\Owner\\Documents\\NetBeansProjects\\AffineCeasar\\src\\HarryPotter.txt");
+        Scanner keyboard = new Scanner(System.in);
+
+        try {
+            String file = keyboard.next();
+
+            try {
+
+                cipherFile.input(file, plainText);
+
+            } catch (FileNotFoundException ex) {
+            }
+
+        } catch (Exception e) {
+        }
+
+        gen.encrypt(plainText, cipherText);
+
+        gen.decrypt(cipherText, decodedText);
+
+        System.out.println("Relative frequency of letters in plain text:");
+        table.getFrequency(plainText, frequency);
+        System.out.println();
+        System.out.println("Relative Frequency of letters in cipher text:");
+        table.getFrequency(cipherText, frequency);
+
+    }
+}
