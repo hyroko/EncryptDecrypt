@@ -1,0 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package affinecaesar;
+
+import java.io.*;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Owner
+ */
+public class InputFile {
+
+    /**
+     *
+     * @param file
+     * @param plainText
+     * @throws FileNotFoundException
+     */
+    public void input(String file, ArrayList plainText)
+            throws FileNotFoundException {
+
+        try {
+            try (FileReader reader = new FileReader(file)) {
+                int character;
+
+                while ((character = reader.read()) != -1) {
+                    char c = (char) character;
+                    if (Character.isLetter(c)) {
+                        c = Character.toLowerCase(c);
+                        
+                        plainText.add((int) c);
+                    }
+                }
+                reader.close();
+            }
+
+        } catch (IOException e) {
+        }
+
+    }
+    
+    
+}
